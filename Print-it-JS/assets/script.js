@@ -52,4 +52,21 @@ rightArrow.addEventListener('click', function (e) {
 		return (undefined)
 	}
 })
+
+leftArrow.addEventListener('click', function (d) {
+	d.preventDefault()
+	let image = document.querySelector('#banner img');
+	if (i === 0) {
+		i = 3
+		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+	} else if (i === slideNumber) {
+		i--
+		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+	} else if (i < slideNumber) {
+		i--
+		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+	} else {
+		return (undefined)
+	}
+})
 	;
