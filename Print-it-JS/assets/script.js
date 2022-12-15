@@ -33,38 +33,54 @@ const secondText = secondBanner["tagLine"];
 const thirdText = thirdBanner["tagLine"];
 const fourthText = fourthBanner["tagLine"];
 
+const bannerText = [firstText, secondText, thirdText, fourthText]
+
 const rightArrow = document.querySelector(".arrow_right");
 const leftArrow = document.querySelector(".arrow_left");
 const slideNumber = 3;
 
-let i = 0
+function setImage(img) {
+	img.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+}
+function setText(txt) {
+	txt.innerHTML = bannerText[i]
+}
 
-rightArrow.addEventListener('click', function (e) {
-	e.preventDefault()
-	let image = document.querySelector('#banner img');
+function setImageAndText(a, b) {
+	setImage(a),
+		setText(b)
+}
+
+let i = 0;
+let image = document.querySelector('#banner img');
+let texte = document.querySelector('#banner p');
+
+rightArrow.addEventListener('click', function (event) {
+	event.preventDefault();
+
 	if (i < slideNumber) {
 		i++
-		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+		setImageAndText(image, texte)
 	} else if (i === slideNumber) {
 		i = 0
-		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+		setImageAndText(image, texte)
 	} else {
 		return (undefined)
 	}
-})
+});
 
-leftArrow.addEventListener('click', function (d) {
-	d.preventDefault()
-	let image = document.querySelector('#banner img');
+leftArrow.addEventListener('click', function (event) {
+	event.preventDefault();
+
 	if (i === 0) {
 		i = 3
-		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+		setImageAndText(image, texte)
 	} else if (i === slideNumber) {
 		i--
-		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+		setImageAndText(image, texte)
 	} else if (i < slideNumber) {
 		i--
-		image.setAttribute('src', "./assets/images/slideshow/" + bannerImage[i])
+		setImageAndText(image, texte)
 	} else {
 		return (undefined)
 	}
